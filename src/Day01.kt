@@ -1,7 +1,19 @@
-package Day01
+fun List<String>.getCaloriesPerElfAsList(): List<Int> {
+    var currentSum = 0
+    val caloriesPerElf: MutableList<Int> = mutableListOf()
 
-import readInput
+    for (line in this) {
+        if (line == "") {
+            caloriesPerElf.add(currentSum)
+            currentSum = 0
+        } else {
+            currentSum += line.toInt()
+        }
+    }
+    caloriesPerElf.add(currentSum)
 
+    return caloriesPerElf.toList()
+}
 fun main() {
 
     fun part1(input: List<String>): Int {
@@ -21,21 +33,6 @@ fun main() {
     val input = readInput("Day01")
     println(part1(input))
     println(part2(input))
+
 }
 
-fun List<String>.getCaloriesPerElfAsList(): List<Int> {
-    var currentSum = 0
-    val caloriesPerElf: MutableList<Int> = mutableListOf()
-
-    for (line in this) {
-        if (line == "") {
-            caloriesPerElf.add(currentSum)
-            currentSum = 0
-        } else {
-            currentSum += line.toInt()
-        }
-    }
-    caloriesPerElf.add(currentSum)
-
-    return caloriesPerElf.toList()
-}
