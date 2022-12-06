@@ -20,7 +20,7 @@ fun main() {
 
         val ranges = secondSplit.map { it.map { IntRange(it.first(), it.last()) } }
 
-        return ranges.sumOf { it.first().overlaps(it.last()).toInt() }
+        return ranges.sumOf { it.first().overlapsPartially(it.last()).toInt() }
     }
 
     val input = readInput("Day04")
@@ -45,6 +45,6 @@ fun IntRange.overlapsFully(other: IntRange): Boolean {
     }
 }
 
-fun IntRange.overlaps(other: IntRange): Boolean {
-    return this.intersect(other).isNotEmpty()
+fun IntRange.overlapsPartially(other: IntRange): Boolean {
+    return (this intersect other).isNotEmpty()
 }
